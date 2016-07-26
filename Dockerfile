@@ -26,6 +26,7 @@ RUN wget "https://rubyripper.googlecode.com/files/rubyripper-$rubyripper_version
     rm rubyripper-*.tar.bz2; \
     mv rubyripper*/ rubyripper; \
     cd /rubyripper/ && \
+    sed -i "s,require 'gtk2',#require 'gtk2',g" configure; \
     ./configure --enable-gtk2 --enable-cli && \
     make install && \
     echo "#!/bin/bash\nrrip_gui \$*\n" > /bin/ssh-app.sh
