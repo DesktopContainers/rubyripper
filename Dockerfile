@@ -10,7 +10,7 @@ RUN apt-get -q -y update && \
                           cdrdao \
                           flac \
                           lame \
-                          easymp3gain-gtk \
+                          wavegain \
                           normalize-audio \
                           ruby-gnome2 \
                           ruby-gettext \
