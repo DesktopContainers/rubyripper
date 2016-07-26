@@ -16,7 +16,7 @@ RUN apt-get -q -y update && \
                           ruby \
                           sox \
                           vorbisgain \
-                          libcanberra-gtk-module
+                          libcanberra-gtk-module && \
     apt-get -q -y clean && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
