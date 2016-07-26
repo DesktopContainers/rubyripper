@@ -13,6 +13,7 @@ RUN apt-get -q -y update && \
                           easymp3gain-gtk \
                           normalize-audio \
                           ruby-gnome2 \
+                          ruby-gettext \
                           ruby \
                           sox \
                           vorbisgain \
