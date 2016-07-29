@@ -16,8 +16,8 @@ Since it is an X11 GUI software, usage is in two steps:
 
         docker start rubyripper || docker run -d --name rubyripper --privileged -v /dev/sr0:/dev/sr0 -v /tmp/:/rips desktopcontainers/rubyripper
         
-  2. Connect to the server using `ssh -X` (as many times you want). 
-     _Logging in with `ssh` automatically opens a firefox window_
+  2. Connect to the server using `ssh -X`. 
+     _Logging in with `ssh` automatically opens rubyripper_
 
         ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no \
         -X app@$(docker inspect --format '{{ .NetworkSettings.IPAddress }}' rubyripper)
