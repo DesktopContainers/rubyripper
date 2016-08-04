@@ -5,7 +5,7 @@ This is a container for the audiophile ripping application.
 
 It needs access to /dev/sr0 device and run as privileged container at the moment.
 
-It's based on __DesktopContainers/base-debian__
+It's based on __DesktopContainers/base-mate__
 
 ## Usage: Run the Client
 

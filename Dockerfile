@@ -1,5 +1,7 @@
 FROM desktopcontainers/base-mate
 
+MAINTAINER MarvAmBass (https://github.com/DesktopContainers)
+
 ENV rubyripper_version 0.6.2
 
 RUN apt-get -q -y update && \
