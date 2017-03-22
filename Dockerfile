@@ -35,6 +35,7 @@ RUN wget "https://rubyripper.googlecode.com/files/rubyripper-$rubyripper_version
 
 RUN mkdir -p /home/app/.config/rubyripper /rips
 ADD settings /home/app/.config/rubyripper/settings
-RUN chown app.app -R /home/app/.config/rubyripper /rips
+RUN chown app.app -R /home/app/.config/rubyripper /rips && \
+    usermod -aG cdrom app
 
 VOLUME ["/rips"]
