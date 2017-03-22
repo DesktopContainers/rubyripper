@@ -23,9 +23,8 @@ RUN apt-get -q -y update && \
     apt-get -q -y clean && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
-RUN wget "https://rubyripper.googlecode.com/files/rubyripper-$rubyripper_version.tar.bz2"; \
+RUN wget "https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/rubyripper/rubyripper-$rubyripper_version.tar.bz2"; \
     tar xvf rubyripper-*.tar.bz2; \
-    rm rubyripper-*.tar.bz2; \
     mv rubyripper*/ rubyripper; \
     cd /rubyripper/ && \
     sed -i "s,require 'gtk2',#require 'gtk2',g" configure; \
