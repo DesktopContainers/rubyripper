@@ -2,35 +2,33 @@ FROM desktopcontainers/base-debian
 
 MAINTAINER MarvAmBass (https://github.com/DesktopContainers)
 
-ENV rubyripper_version 0.6.2
-
 RUN apt-get -q -y update && \
-    apt-get -q -y install wget \
+ && apt-get -q -y install wget \
                           make \
                           cd-discid \
                           cdparanoia \
                           cdrdao \
                           flac \
                           lame \
-                          easymp3gain-gtk \
+                          wavpack \
                           normalize-audio \
-                          ruby-gnome2 \
+                          ruby-gtk2 \
                           ruby-gettext \
                           ruby \
+                          eject \
                           sox \
                           vorbisgain \
-                          libcanberra-gtk-module && \
-    apt-get -q -y clean && \
-    rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+ && apt-get -q -y clean \
+ && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
-RUN wget "https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/rubyripper/rubyripper-$rubyripper_version.tar.bz2"; \
-    tar xvf rubyripper-*.tar.bz2; \
-    mv rubyripper*/ rubyripper; \
-    cd /rubyripper/ && \
-    sed -i "s,require 'gtk2',#require 'gtk2',g" configure; \
-    ./configure --enable-gtk2 --enable-cli && \
-    make install && \
-    echo "rrip_gui \$*" >> /usr/local/bin/bin/ssh-app.sh
+RUN wget -O /rubyripper.tar.gz https://github.com/bleskodev/rubyripper/archive/master.tar.gz \
+ && tar xvf /rubyripper.tar.gz \
+ && mv rubyripper-* /opt/rubyripper \
+ && sed -i "s,deps.verify,#deps.verify',g" /opt/rubyripper/configure \
+ && cd /opt/rubyripper \
+ && ./configure --enable-lang-all --enable-gtk2 --enable-cli --prefix=/usr \
+ && make install \
+ && echo "rrip_gui \$*" >> /usr/local/bin/bin/ssh-app.sh
 
 RUN mkdir -p /home/app/.config/rubyripper /rips
 ADD settings /home/app/.config/rubyripper/settings
