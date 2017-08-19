@@ -28,7 +28,7 @@ RUN wget -O /rubyripper.tar.gz https://github.com/bleskodev/rubyripper/archive/m
  && cd /opt/rubyripper \
  && ./configure --enable-lang-all --enable-gtk2 --enable-cli --prefix=/usr \
  && make install \
- && echo "rrip_gui \$*" >> /usr/local/bin/bin/ssh-app.sh \
+ && echo "rrip_gui \$*" >> /usr/local/bin/ssh-app.sh \
  \
  && mkdir -p /home/app/.config/rubyripper /rips
 
