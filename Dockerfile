@@ -32,7 +32,7 @@ RUN wget -O /rubyripper.tar.gz https://github.com/bleskodev/rubyripper/archive/m
  \
  && mkdir -p /home/app/.config/rubyripper /rips \
  \
- && sed -i 's/starting services"/starting services"\n\nchmod a+rwx /rips\n\n/g' /usr/local/bin/entrypoint.sh
+ && sed -i 's/starting services"/starting services"\n\nchmod a+rwx \/rips\n\n/g' /usr/local/bin/entrypoint.sh
 
 COPY settings /home/app/.config/rubyripper/settings
 
