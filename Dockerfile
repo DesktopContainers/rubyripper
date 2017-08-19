@@ -1,4 +1,4 @@
-FROM desktopcontainers/base-mate
+FROM desktopcontainers/base-debian
 
 MAINTAINER MarvAmBass (https://github.com/DesktopContainers)
 
@@ -30,7 +30,7 @@ RUN wget "https://storage.googleapis.com/google-code-archive-downloads/v2/code.g
     sed -i "s,require 'gtk2',#require 'gtk2',g" configure; \
     ./configure --enable-gtk2 --enable-cli && \
     make install && \
-    echo "#!/bin/bash\nrrip_gui \$*\n" > /bin/ssh-app.sh
+    echo "rrip_gui \$*" >> /bin/ssh-app.sh
 
 RUN mkdir -p /home/app/.config/rubyripper /rips
 ADD settings /home/app/.config/rubyripper/settings
