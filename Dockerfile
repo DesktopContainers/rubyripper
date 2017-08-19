@@ -30,7 +30,9 @@ RUN wget -O /rubyripper.tar.gz https://github.com/bleskodev/rubyripper/archive/m
  && make install \
  && echo "rrip_gui \$*" >> /usr/local/bin/ssh-app.sh \
  \
- && mkdir -p /home/app/.config/rubyripper /rips
+ && mkdir -p /home/app/.config/rubyripper /rips \
+ \
+ && sed -i 's/starting services"/starting services"\n\nchmod a+rwx /rips\n\n/g' /usr/local/bin/entrypoint.sh
 
 COPY settings /home/app/.config/rubyripper/settings
 
