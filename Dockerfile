@@ -28,11 +28,13 @@ RUN wget -O /rubyripper.tar.gz https://github.com/bleskodev/rubyripper/archive/m
  && cd /opt/rubyripper \
  && ./configure --enable-lang-all --enable-gtk2 --enable-cli --prefix=/usr \
  && make install \
- && echo "rrip_gui \$*" >> /usr/local/bin/bin/ssh-app.sh
+ && echo "rrip_gui \$*" >> /usr/local/bin/bin/ssh-app.sh \
+ \
+ && mkdir -p /home/app/.config/rubyripper /rips
 
-RUN mkdir -p /home/app/.config/rubyripper /rips
-ADD settings /home/app/.config/rubyripper/settings
-RUN chown app.app -R /home/app/.config/rubyripper /rips && \
-    usermod -aG cdrom app
+COPY settings /home/app/.config/rubyripper/settings
+
+RUN chown app.app -R /home/app/.config/rubyripper /rips \
+ && usermod -aG cdrom app
 
 VOLUME ["/rips"]
