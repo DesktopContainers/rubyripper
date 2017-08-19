@@ -2,7 +2,7 @@ FROM desktopcontainers/base-debian
 
 MAINTAINER MarvAmBass (https://github.com/DesktopContainers)
 
-RUN apt-get -q -y update && \
+RUN apt-get -q -y update \
  && apt-get -q -y install wget \
                           make \
                           cd-discid \
